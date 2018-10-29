@@ -6,11 +6,14 @@ request.get('https://sytantris.github.io/http-examples/future.jpg')             
        .on('error', function (err) {                                   // Note 2
          throw err;
        })
-       .on('response', function (response) {                           // Note 3
+       .on('response', function (response) {
+         console.log('downloading image');                          // Note 3
          console.log('Response Status Code: ', response.statusCode);
          console.log('Content Type: ', response.headers['content-type'])
+         console.log('download complete');
        })
-       .pipe(fs.createWriteStream('./future.jpg'));               // Note 4
+       .pipe(fs.createWriteStream('./future.jpg'));
+                     // Note 4
 
 // Notes:
 // 1. `request.get` is equivalent to `request()`
